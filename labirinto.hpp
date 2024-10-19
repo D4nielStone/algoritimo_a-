@@ -53,7 +53,6 @@ private:
 
     // Método para exibir a matriz
     void exibir() const {
-    	std::cout << "Labirinto: \n";
     	if(layout.empty())return;
         for (const auto& linha : layout) {
             for (char c : linha) {
@@ -82,21 +81,22 @@ private:
     void descobrir_vizinhos(No* no)
     {
     	//verifica vizinho à baixo
-    	if(layout[no->posicao.y + 1][no->posicao.x] != '#') no->adi_vizinho({no->posicao.x, no->posicao.y + 1});
+    	if(no->posicao.y + 1 < layout.size() && layout[no->posicao.y + 1][no->posicao.x] != '#') no->adi_vizinho({no->posicao.x, no->posicao.y + 1});
 
     	//verifica vizinho à cima
-    	if(no->posicao.y > 0 && layout[no->posicao.y - 1][no->posicao.x] != '#') no->adi_vizinho({no->posicao.x, no->posicao.y - 1});
+    	if(no->posicao.y -1 > 0 && no->posicao.y > 0 && layout[no->posicao.y - 1][no->posicao.x] != '#') no->adi_vizinho({no->posicao.x, no->posicao.y - 1});
 
     	//verifica vizinho à esquerda
-    	if(no->posicao.x > 0 && layout[no->posicao.y][no->posicao.x - 1] != '#') no->adi_vizinho({no->posicao.x - 1, no->posicao.y});
+    	if(no->posicao.x -1 > 0 && no->posicao.x > 0 && layout[no->posicao.y][no->posicao.x - 1] != '#') no->adi_vizinho({no->posicao.x - 1, no->posicao.y});
 
     	//verifica vizinho à direita
-    	if(no->posicao.x < layout[0].size()-1 && layout[no->posicao.y][no->posicao.x + 1] != '#') no->adi_vizinho({no->posicao.x + 1, no->posicao.y});
+    	if(no->posicao.x +1 < layout[0].size() && no->posicao.x < layout[0].size()-1 && layout[no->posicao.y][no->posicao.x + 1] != '#') no->adi_vizinho({no->posicao.x + 1, no->posicao.y});
     }
 public:
 	Labirinto(std::string path): nome_arquivo(path)
 	{
 		ler_arquivo();
+        std::cout << "Labirinto: \n";
 		exibir();
 	}
 	// Método para solucionar labirinto
