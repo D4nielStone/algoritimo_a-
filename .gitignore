@@ -1,2 +1,3 @@
 # Ignorar editor
 .vscode
+out/app
