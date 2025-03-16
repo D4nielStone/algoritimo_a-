@@ -1,1 +1,1 @@
-# Algorítimo de busca
+# Algorítimo de busca A*

@@ -7,6 +7,7 @@ struct ivec2
 struct No
 {
 	ivec2 posicao;
+	float g{0}, h{0};
 	std::vector<No*> vizinhos;
 	No* pai {nullptr};
 	No(){};
